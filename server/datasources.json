@@ -3,7 +3,7 @@
     "name": "db",
     "connector": "memory"
   },
-  "mongodb_dev": {
+  "mongodb": {
     "database": "survey-mgmt",
     "name": "mongodb_dev",
     "connector": "mongodb"
