@@ -4,9 +4,6 @@
     "connector": "memory"
   },
   "mongodb": {
-    "database": "survey-mgmt",
-    "name": "mongodb_dev",
-    "connector": "mongodb"
   },
   "geo": {
     "name": "geo",
