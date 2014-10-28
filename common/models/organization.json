@@ -1,0 +1,61 @@
+{
+  "name": "Organization",
+  "base": "PersistedModel",
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "street1": {
+      "type": "string"
+    },
+    "street2": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "person": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "typeDetail": {
+      "type": "string"
+    },
+    "services": {
+      "type": [
+        "string"
+      ]
+    },
+    "serviceDetail": {
+      "type": "object"
+    },
+    "partners": {
+      "type": "object"
+    },
+    "geo": {
+      "type": "geopoint"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}

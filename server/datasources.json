@@ -1,0 +1,39 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mongodb_dev": {
+    "database": "survey-mgmt",
+    "name": "mongodb_dev",
+    "connector": "mongodb"
+  },
+  "geo": {
+    "name": "geo",
+    "connector": "rest",
+    "operations": [
+      {
+        "template": {
+          "url": "http://maps.googleapis.com/maps/api/geocode/{format=json}",
+          "headers": {
+              "accepts": "application/json",
+              "content-type": "application/json"
+          },
+          "query": {
+              "address": "{street1} {street2},{city},{postalCode}",
+              "sensor": "{sensor=false}"
+          },
+          "responsePath": "$.results[0].geometry.location"
+        },
+        "functions": {
+          "geocode": [
+            "street1",
+            "street2",
+            "city",
+            "postalCode"
+          ]
+        }
+      }
+    ]
+  }
+}

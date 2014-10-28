@@ -1,0 +1,47 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        Organizations
+        <button class="btn btn-xs btn-success pull-right" ng-click="addOrganization()">Add Organization</button>
+    </div>
+    <div class="panel-body">
+        <table ng-show="organizations.length" class="table">
+            <colgroup>
+              <col class="col-xs-5" />
+              <col class="col-xs-5" />
+              <col class="col-xs-2" />
+            </colgroup>
+            <thead>
+              <tr>
+                <td>
+                  <strong>Organization</strong>
+                </td>
+                <td>
+                  <strong>Street</strong>
+                </td>
+                <td>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="organization in organizations | orderBy:'name'">
+                  <td>
+                      {{organization.name}}
+                  </td>
+                  <td>
+                      {{organization.street1}} {{organization.street2}}<br>
+                      {{organization.city}} {{organization.state}} {{organization.postalCode}}
+                  </td>
+                  <td>
+                      <button class="btn btn-xs btn-default" ui-sref="organization.view({id: organization.id})">View</button>
+                      <button class="btn btn-xs btn-danger" data-template="/templates/remove-popover.html" bs-popover="{organization: organization}">Delete</button>
+                  </td>
+              </tr>
+            </tbody>
+        </table>
+
+        <p ng-hide="organizations.length" class="text-muted text-center">
+            No organizations found
+        </p>
+    </div>
+</div>

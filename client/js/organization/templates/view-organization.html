@@ -1,0 +1,16 @@
+
+<h3>{{organization.name}}</h3>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Address:
+        {{organization.street1}}<span ng-show="organization.street2"> {{organization.street2}}</span>, {{organization.city}}, {{organization.state}} {{organization.postalCode}}
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div id="org-map" class="col-sm-12">
+        <leaflet center="center" markers="markers" layers="layers"></leaflet>
+      </div>
+    </div>
+  </div>
+</div>

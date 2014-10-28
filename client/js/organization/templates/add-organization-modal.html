@@ -1,0 +1,193 @@
+<div class="modal modal-large" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <strong>Add Organization</strong>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <form name="addOrganizationForm" role="form">
+                <fieldset ng-show="modalStates[modalState] == 'name'">
+                  <legend>Organization Name</legend>
+                  <div class="form-group">
+                      <label for="formOrganizationName">Name</label>
+                      <input ng-model="organization.name" id="formOrganizationName" class="form-control" type="text" placeholder="Enter Name" required>
+                  </div>
+                </fieldset>
+
+                <fieldset ng-show="modalStates[modalState] == 'address'">
+                  <legend>Address</legend>
+
+                  <div class="form-group">
+                    <label for="formOrganizationStreet1">Street</label>
+                    <input ng-model="organization.street1" id="formOrganizationStreet1" class="form-control" type="text" placeholder="Enter Street">
+                  </div>
+                  <div class="form-group">
+                      <input ng-model="organization.street2" id="formOrganizationStreet2" class="form-control" type="text" placeholder="(optional)">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formOrganizationCity">City</label>
+                    <input ng-model="organization.city" id="formOrganizationCity" class="form-control" type="text" placeholder="Enter City">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formOrganizationState">State</label>
+                    <input ng-model="organization.state" id="formOrganizationState" class="form-control" type="text" placeholder="Enter State">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formOrganizationPostalCode">Postal Code</label>
+                    <input ng-model="organization.postalCode" id="formOrganizationPostalCode" class="form-control" type="text" placeholder="Enter Postal Code">
+                  </div>
+                </fieldset>
+
+                <fieldset ng-show="modalStates[modalState] == 'contact'">
+                  <legend>Contact</legend>
+
+                  <div class="form-group">
+                    <label for="formOrganizationPerson">Contact Name</label>
+                    <input ng-model="organization.person" id="formOrganizationPerson" class="form-control" type="text" placeholder="Enter contact name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formOrganizationEmail">Email</label>
+                    <input ng-model="organization.email" id="formOrganizationEmail" class="form-control" type="text" placeholder="Enter email">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formOrganizationPhone">Phone</label>
+                    <input ng-model="organization.phone" id="formOrganizationPhone" class="form-control" type="text" placeholder="Enter phone">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formOrganizationWebsite">Website</label>
+                    <div class="input-group">
+                      <span class="input-group-addon">http://</span>
+                      <input ng-model="organization.website" id="formOrganizationWebsite" class="form-control" type="text" placeholder="Enter website">
+                    </div>
+                  </div>
+                </fieldset>
+
+                <fieldset ng-show="modalStates[modalState] == 'survey'">
+                  <legend>Survey</legend>
+
+                  <div class="form-group">
+                    <label for="formOrganizationType">Type</label>
+
+                    <div ng-repeat="types in OrgTypes" class="radio">
+                      <label>
+                        <input ng-model="$parent.organization.type" type="radio" id="formOrganizationServices-{{types.tag}}" value="{{types.tag}}">
+                        {{types.name}}
+                        <input ng-show="types.detail" ng-model="$parent.organization.typeDetail" type="text">
+                      </label>
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <label for="formOrganizationServices">Services</label>
+
+                    <div ng-repeat="service in services" class="checkbox">
+                      <label>
+                        <input ng-model="service.selected" type="checkbox" id="formOrganizationServices-{{service.tag}}" value="{{service.tag}}">
+                        {{service.name}}
+                        <input ng-show="service.detail" ng-model="service.details" type="text">
+                      </label>
+                    </div>
+
+                  </div>
+
+                </fieldset>
+
+                <fieldset ng-show="modalStates[modalState] == 'partners'">
+                  <legend>Partners</legend>
+
+                  <div ng-repeat="partner in organization.partners">
+                    <div class="form-group">
+                      <label for="formOrganizationPartner1">Partner {{$index + 1}}</label>
+                      <input ng-model="partner.name" id="formOrganizationPartner1" class="form-control" type="text" placeholder="Enter Partner Name">
+                    </div>
+                  </div>
+                </fieldset>
+
+
+            </form>
+          </div>
+
+          <div class="col-md-6">
+            <table class="table table-bordered">
+              <colgroup>
+                <col class="col-xs-3" />
+                <col class="col-xs-9" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <td class="text-center" colspan="2">
+                    <h4>Review Organization</h4>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>{{organization.name}}</td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>
+                    {{organization.street1}}<br>
+                    {{organization.street2}}<br>
+                    {{organization.city}} {{organization.state}} {{organization.postalCode}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Contact</td>
+                  <td>
+                    <i class="fa fa-user"></i> {{organization.person}}<br>
+                    <i class="fa fa-at"></i> {{organization.email}}<br>
+                    <i class="fa fa-phone"></i> {{organization.phone}}<br>
+                    <i class="fa fa-link"></i> {{organization.website}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Survey</td>
+                  <td>
+                    <i class="fa fa-briefcase"></i> {{organization.type == 'other' && organization.typeDetail || organization.type || ''}}<br>
+                    <i class="fa fa-tags"></i><br>
+                    <ul>
+                      <li ng-repeat="service in services" ng-show="service.selected">
+                        {{service.name}} <em ng-show="service.details"> - {{service.details}}</em>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Partners</td>
+                  <td>
+                    <ul>
+                      <li ng-repeat="partner in organization.partners" ng-show="partner.name">
+                        {{organization.partner.name}}
+                      </li>
+                    </ul>
+                  </td>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+          <button ng-click="$hide()" class="btn btn-default pull-left">Cancel</button>
+
+          <button ng-disabled="modalState == 0" ng-click="prevState(modalState)" class="btn btn-default"><i class="fa fa-angle-left"></i> Prev</button>
+          <button ng-disabled="!addOrganizationForm.$valid" ng-show="modalState < modalStates.length - 1" ng-click="nextState(modalState)" class="btn btn-default">Next <i class="fa fa-angle-right"></i></button>
+
+          <button ng-show="modalState == modalStates.length - 1" ng-click="save()" class="btn btn-default btn-success">Add</button>
+
+          {{modalState + 1}} / {{modalStates.length + 1}}
+      </div>
+    </div>
+  </div>
+</div>

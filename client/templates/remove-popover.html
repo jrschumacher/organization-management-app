@@ -1,0 +1,8 @@
+<div class="popover">
+  <div class="arrow"></div>
+  <h3 class="popover-title">Do you want to delete this item?</h3>
+  <div class="popover-content">
+    <button ng-click="$hide()" class="btn btn-default btn-sm">No, cancel</button>
+    <button ng-click="removeOrganization(organization)" class="btn btn-danger btn-sm">Yes, delete {{type || 'this item'}}</button>
+  </div>
+</div>

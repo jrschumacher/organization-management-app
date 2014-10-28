@@ -1,0 +1,16 @@
+body {
+    min-height: 200px;
+    padding-top: 70px;
+}
+
+#org-map .angular-leaflet-map {
+  height: 200px;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+}
+
+#large-map .angular-leaflet-map {
+  height: 400px;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+}

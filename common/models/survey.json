@@ -1,0 +1,17 @@
+{
+  "name": "Survey",
+  "base": "PersistedModel",
+  "properties": {
+    "surveyId": {
+      "type": "string",
+      "required": true
+    },
+    "data": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": []
+}
