@@ -1,16 +1,48 @@
 
 <h3>{{organization.name}}</h3>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Address:
-        {{organization.street1}}<span ng-show="organization.street2"> {{organization.street2}}</span>, {{organization.city}}, {{organization.state}} {{organization.postalCode}}
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h4>Contact Name</h4> {{organization.person}}
+      </li>
+      <li class="list-group-item">
+        <h4>Email</h4>
+        {{organization.email}} <a ng-href="mailto:{{organization.email}}" target="_blank" class="pull-right"><i class="fa fa-envelope"></i></a>
+      </li>
+      <li class="list-group-item">
+        <h4>Phone</h4> {{organization.phone}} <a ng-href="tel:{{organization.phone}}" target="_blank" class="pull-right"><i class="fa fa-phone"></i></a>
+      </li>
+      <li class="list-group-item">
+        <h4>Website</h4> http://{{organization.website}} <a ng-href="http://{{organization.website}}" target="_blank" class="pull-right"><i class="fa fa-external-link"></i></a>
+      </li>
+      <li class="list-group-item">
+        <h4>Type</h4> {{organization.type}} <em ng-show="organization.typeDetail">{{organization.typeDetail}}</em>
+      </li>
+      <li class="list-group-item">
+        <h4>Services</h4>
+        {{organization.services}}
+      </li>
+    </ul>
   </div>
-  <div class="panel-body">
-    <div class="row">
-      <div id="org-map" class="col-sm-12">
-        <leaflet center="center" markers="markers" layers="layers"></leaflet>
-      </div>
-    </div>
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h4>Address</h4>
+            <span ng-show="organization.street1 || organization.street2">
+              <span ng-show="organization.street1">{{organization.street1}}</span><span ng-show="organization.street2"> {{organization.street2}}</span>
+              <br>
+            </span>
+            {{organization.city}}, {{organization.state}} {{organization.postalCode}}
+      </li>
+      <li class="list-group-item">
+        <div class="row">
+          <div id="org-map" class="col-sm-12">
+            <leaflet center="center" markers="markers" layers="layers"></leaflet>
+          </div>
+        </div>
+      </li>
+    </ul>
   </div>
 </div>
