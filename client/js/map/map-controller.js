@@ -10,6 +10,10 @@ angular
     '$scope', '$state', 'leafletData', 'Organization',
     function($scope, $state, leafletData, Organization) {
 
+      var drawnItems = new L.FeatureGroup();
+      var options = { edit: { featureGroup: drawnItems } };
+      var drawControl = new L.Control.Draw(options);
+
       angular.extend($scope, {
         center: {
           lat: 42.36,
@@ -27,7 +31,18 @@ angular
           }
         },
         controls: {
+          custom: [drawControl]
         }
+      });
+
+      leafletData.getMap().then(function(map) {
+        map.addLayer(drawnItems);
+
+        map.on('draw:created', function (e) {
+          var layer = e.layer;
+          drawnItems.addLayer(layer);
+          console.log(JSON.stringify(layer.toGeoJSON()));
+        });
       });
 
       Organization
